@@ -27,5 +27,7 @@ class FormController extends Controller
         // Process the form data as needed (e.g., save to a database)
 
         return "Form submitted successfully!<br>Name: {$validatedData['name']}<br>Email: {$validatedData['email']}<br>Gender: {$validatedData['gender']}";
+        // return redirect()->route('success')->with('success', 'Form submitted successfully!');
+
     }
 }
