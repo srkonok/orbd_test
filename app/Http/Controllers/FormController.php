@@ -26,8 +26,12 @@ class FormController extends Controller
         $formData->save();
         // Process the form data as needed (e.g., save to a database)
 
-        return "Form submitted successfully!<br>Name: {$validatedData['name']}<br>Email: {$validatedData['email']}<br>Gender: {$validatedData['gender']}";
-        // return redirect()->route('success')->with('success', 'Form submitted successfully!');
+        return redirect()->route('display-rows')->with('success', 'Form submitted successfully!');
+          // return redirect()->route('success')->with('success', 'Form submitted successfully!');
 
+    }
+    public function create()
+    {
+        return view('form'); // Create a 'create.blade.php' view for your form
     }
 }
