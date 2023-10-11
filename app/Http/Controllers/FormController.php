@@ -11,27 +11,47 @@ class FormController extends Controller
         return view('form');
     }
 
+
+    public function create()
+    {
+        return view('form'); // Create a 'create.blade.php' view for your form
+    }
+    public function showForm()
+    {
+        return view('form'); // Replace 'form' with your actual view name
+    }
+
     public function store(Request $request)
     {
         // Validate the form data
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'gender' => 'required|in:Male,Female',
+            'name_eng' => 'required|string|max:255',
+            'fathers_name' => 'required|string|max:255',
+            'fathers_name_eng' => 'required|string|max:255',
+            'mothers_name' => 'required|string|max:255',
+            'mothers_name_eng' => 'required|string|max:255',
+            'spouse_name' => 'required|string|max:255',
+            'spouse_name_eng' => 'required|string|max:255',
+            'dob' => 'required|date',
+            'religion' => 'required|string|max:255',
+            'gender' => 'required|string|max:255',
+            'nid' => 'required|string|max:255',
+            'occupation' => 'required|string|max:255',
+            'nationality' => 'required|string|max:255',
+            'tin' => 'required|string|max:255',
+            'brn' => 'required|string|max:255',
+            'present_address' => 'required|string|max:255',
+            'division' => 'required|string|max:255',
+            'district' => 'required|string|max:255',
+            'upazila' => 'required|string|max:255',
+            'permanent_address' => 'required|string|max:255',
         ]);
-        $formData = new FormData;
-        $formData->name = $validatedData['name'];
-        $formData->email = $validatedData['email'];
-        $formData->gender = $validatedData['gender'];
-        $formData->save();
-        // Process the form data as needed (e.g., save to a database)
 
-        return redirect()->route('display-rows')->with('success', 'Form submitted successfully!');
-          // return redirect()->route('success')->with('success', 'Form submitted successfully!');
+        // Create a new instance of the model and fill it with the validated data
+        FormData::create($validatedData);
 
-    }
-    public function create()
-    {
-        return view('form'); // Create a 'create.blade.php' view for your form
+        // Optionally, you can return a success message or redirect to a success page
+        return redirect()->route('display-rows')->with('success', 'Data inserted successfully!');
     }
 }

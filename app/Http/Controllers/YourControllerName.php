@@ -18,23 +18,41 @@ class YourControllerName extends Controller
     public function edit($id)
     {
         // Retrieve the record you want to edit by its ID
-        $record = FormData::find($id);
+        $user= FormData::find($id);
 
         // Check if the record exists
-        if (!$record) {
-            // Handle the case where the record is not found, e.g., show an error message or redirect
+        if (!$user) {
+            return redirect()->route('display-rows')->with('error', 'User not found');
         }
 
         // Return a view with the record data
-        return view('edit', ['record' => $record]);
+        return view('edit', compact('user'));
     }
     public function update(Request $request, $id)
 {
     // Validate the form data
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
-        'email' => 'required|email|max:255',
-        'gender' => 'required|in:Male,Female',
+        'name_eng' => 'required|string|max:255',
+        'fathers_name' => 'required|string|max:255',
+        'fathers_name_eng' => 'required|string|max:255',
+        'mothers_name' => 'required|string|max:255',
+        'mothers_name_eng' => 'required|string|max:255',
+        'spouse_name' => 'required|string|max:255',
+        'spouse_name_eng' => 'required|string|max:255',
+        'dob' => 'required|date',
+        'religion' => 'required|string|max:255',
+        'gender' => 'required|string|max:255',
+        'nid' => 'required|string|max:255',
+        'occupation' => 'required|string|max:255',
+        'nationality' => 'required|string|max:255',
+        'tin' => 'required|string|max:255',
+        'brn' => 'required|string|max:255',
+        'present_address' => 'required|string|max:255',
+        'division' => 'required|string|max:255',
+        'district' => 'required|string|max:255',
+        'upazila' => 'required|string|max:255',
+        'permanent_address' => 'required|string|max:255',
     ]);
 
     // Find the record to update by its ID

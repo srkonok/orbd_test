@@ -22,8 +22,9 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Gender</th>
+                    <th>Father Name</th>
+                    <th>Address</th>
+                    
                     <th>Actions</th> <!-- Add a new column for actions -->
                 </tr>
             </thead>
@@ -32,8 +33,8 @@
                 <tr>
                     <td>{{ $row->id }}</td>
                     <td>{{ $row->name }}</td>
-                    <td>{{ $row->email }}</td>
-                    <td>{{ $row->gender }}</td>
+                    <td>{{ $row->fathers_name }}</td>
+                    <td>{{ $row->present_address}}</td>
                     <td>
                         <a href="{{ route('edit', ['id' => $row->id]) }}" class="btn btn-primary">Edit</a>
                         <form method="POST" action="{{ route('delete', ['id' => $row->id]) }}" style="display: inline;">

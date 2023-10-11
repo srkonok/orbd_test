@@ -31,3 +31,5 @@ Route::put('/update/{id}', [YourControllerName::class, 'update'])->name('update'
 // Route to delete data
 Route::delete('/delete/{id}', [YourControllerName::class, 'destroy'])->name('delete');
 Route::get('/create', [FormController::class, 'create'])->name('create');
+Route::get('/form', [FormController::class, 'showForm']);
+Route::post('/form', [FormController::class, 'store'])->name('form.store');
